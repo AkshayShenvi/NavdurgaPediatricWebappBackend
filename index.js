@@ -1,20 +1,22 @@
 const express = require('express');
 const app = express();
-var con = require('mssql')
-var config ={
-  user:'',
-  password:'',
-  server:'LAPTOP-4409GM8C\SQLEXPRESS',
-  database:'navdurga'
-}
-con.connect(config,err=>{
-  if(err){
-    console.log(err)
-  } 
-})
+var mysql      = require('mysql');
+
+var connection = mysql.createConnection({
+  host     : '127.0.0.1',
+  user     : 'root',
+  password : 'navdurga1991'
+});
+
 app.get('/',(req,res)=>{
   
-  res.send({hi:'there'});
+  connection.connect(function(err) {
+    if (err) throw err;
+    res.send({Msg:'Connected'});
+  });
+  
+  connection.end();
+  
 });
 
 const PORT = process.env.PORT || 5000;
