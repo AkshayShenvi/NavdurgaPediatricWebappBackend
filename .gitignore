@@ -1,1 +1,10 @@
+#Ignoring node modules
 node_modules
+
+#ignoring cloud_cli
+cloud_sql_proxy.exe
+
+#jason key
+navdurga1991-f9d77a437a8e.json
+config.json
+.vscode
