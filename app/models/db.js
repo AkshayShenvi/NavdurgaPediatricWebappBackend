@@ -24,4 +24,5 @@ exports.getConnection = (req, res) => {
     }
   });
 };
+
 module.exports = connection;
