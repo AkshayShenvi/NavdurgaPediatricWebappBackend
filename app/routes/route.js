@@ -4,7 +4,7 @@ process.env.NODE_ENV = 'production';
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 const cors = require('cors');
-app.use(cors()) 
+app.use(cors())
 
 const treatment = require('../controllers/treatment.js');
 const connection = require('../../app/models/db.js');
@@ -33,21 +33,18 @@ app.delete('/treatment/:treatmentId', function (req, res) {
     treatment.delete(req, res);
 });
 
-
-
 // ------------User Routing-----------
 app.post('/login', (req, res) => {
-    // connection.getConnection(req, res);
-   // res.json('signin')
-    console.log('loginUser');
     user.search(req, res);
 });
 
+app.post('/signup', (req, res) => {
+    user.add(req, res);
+});
+
 app.get('/', (req, res) => {
-    // res.send('working, connected');
-    
-    if(connection)
-        res.json('conhhhhhnected');
+    if (connection)
+        res.json('connected');
     else
         res.status(500).send('error');
 });

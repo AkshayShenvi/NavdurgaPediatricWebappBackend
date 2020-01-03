@@ -1,9 +1,11 @@
 
 var connection = require('./db.js');
-exports.save = (treatment) => {
-  
+
+
+exports.save = (user) => {
+
   return new Promise((resolve, reject) => {
-    var sql = "Insert into navdurga.treatment(name, description, charges) values ('" + treatment.name + "', '" + treatment.description + "', '" + treatment.charges + "') ;";
+    var sql = "Insert into navdurga.users(userid, password) values ('" + user.userId + "', '" + user.password + "') ;";
     connection.query(sql, function (error, results, fields) {
       if (error || !results) {
         reject(error);
@@ -21,18 +23,15 @@ exports.save = (treatment) => {
 exports.findById = (req) => {
   return new Promise((resolve) => {
     var sql = "Select * from navdurga.users where userid = '" + req.body.userId + "' ;";
-    connection.query(sql,req,  function (error, results, fields) {
-      console.log(results);
-      var data = JSON.parse(JSON.stringify(results)); 
-      var valid = false; 
-      console.log(data);
-      if( data.length !=0 && req.body.userId === data[0].userid && req.body.password === data[0].password)
-        valid = true; 
-     
-      if(valid) {
-          resolve({message : "success"});
-      }else{
-        reject({ message :"fail"});
+    connection.query(sql, req, function (error, results, fields) {
+
+      var data = JSON.parse(JSON.stringify(results));
+      var valid = false;
+
+      if (data.length != 0) {
+        resolve(data);
+      } else {
+        resolve({ message: "fail" });
 
       }
 
