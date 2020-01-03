@@ -3,7 +3,7 @@ var treat = require('../models/treatments.js');
 
 // add new treatment
 exports.add = (req, res) => {
-    if (!req.body) {
+    if (!req.body.content) {
         return res.status(400).send({
             message: "Please provide valid input!"
         });
@@ -58,7 +58,7 @@ exports.search = (req, res) => {
 // Update a treatment with treatmentId
 exports.update = (req, res) => {
 
-    if (!req.body) {
+    if (!req.body.content) {
         return res.status(400).send({
             message: "Please provide valid data!"
         });
