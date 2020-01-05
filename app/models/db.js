@@ -24,5 +24,10 @@ exports.getConnection = (req, res) => {
     }
   });
 };
+exports.endConnection=()=>{
+  connection.end(err=>{
+    res.send(err);
+  })
+}
 
 module.exports = connection;
