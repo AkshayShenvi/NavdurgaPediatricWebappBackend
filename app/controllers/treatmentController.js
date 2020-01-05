@@ -1,9 +1,10 @@
-var treat = require('../models/treatments.js');
-
+var treat = require('../models/treatment.js');
+const lodash = require('lodash');
+const isEmpty = lodash.isEmpty
 
 // add new treatment
 exports.add = (req, res) => {
-    if (!req.body.content) {
+    if (isEmpty(req.body)) {
         return res.status(400).send({
             message: "Please provide valid input!"
         });
@@ -58,7 +59,7 @@ exports.search = (req, res) => {
 // Update a treatment with treatmentId
 exports.update = (req, res) => {
 
-    if (!req.body.content) {
+    if (isEmpty(req.body)) {
         return res.status(400).send({
             message: "Please provide valid data!"
         });

@@ -6,7 +6,7 @@ app.use(bodyParser.json());
 const cors = require('cors');
 app.use(cors())
 
-const treatment = require('../controllers/treatment.js');
+const treatment = require('../controllers/treatmentController.js');
 const connection = require('../../app/models/db.js');
 const user = require('../controllers/userController.js');
 
@@ -25,7 +25,7 @@ app.get('/treatments/search/:treatmentId', function (req, res) {
 
 //update for treatment with id
 app.put('/treatment/:treatmentId', function (req, res) {
-    treatment.update(req, res);
+    treatment.update(req, res);    
 });
 
 //delete for treatment with id
