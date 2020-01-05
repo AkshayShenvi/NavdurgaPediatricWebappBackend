@@ -21,7 +21,7 @@ exports.save = (user) => {
 
 
 exports.findById = (req) => {
-  return new Promise((resolve) => {
+  return new Promise((resolve,reject) => {
     var sql = "Select * from navdurga.users where userid = '" + req.body.userId + "' ;";
     connection.query(sql, req, function (error, results, fields) {
 
