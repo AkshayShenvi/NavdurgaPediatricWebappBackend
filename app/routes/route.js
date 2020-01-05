@@ -9,6 +9,22 @@ app.use(cors())
 const treatment = require('../controllers/treatmentController.js');
 const connection = require('../../app/models/db.js');
 const user = require('../controllers/userController.js');
+const appointmentController = require('../controllers/appointmentController');
+
+
+// get doctors with appointment count
+app.post('/appointmentcount',(req,res)=>{
+    appointmentController.getDoctorCount(req,res);
+});
+
+app.post('/appointmentdetails',(req,res)=>{
+    appointmentController.getAppointmentDetails(req,res);
+});
+
+app.post('/addappointment',(req,res)=>{
+    appointmentController.addAppointmentExistingPatient(req,res);
+});
+
 
 // add treatment
 app.post('/treatment', function (req, res) {
