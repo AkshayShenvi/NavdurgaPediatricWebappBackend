@@ -1,9 +1,0 @@
-create a npm module:
-npm init  
-
-
-To install express:
-npm install --save express  
-
-To install node:
-npm install node

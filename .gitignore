@@ -1,10 +1,15 @@
-#Ignoring node modules
-node_modules
 
-#ignoring cloud_cli
-cloud_sql_proxy.exe
-
-#jason key
-navdurga1991-9574a0c86b0a.json
-config.json
-.vscode
+*.egg-info
+*.pot
+*.py[co]
+.tox/
+__pycache__
+MANIFEST
+dist/
+docs/_build/
+docs/locale/
+node_modules/
+tests/coverage_html/
+tests/.coverage
+build/
+tests/report/
