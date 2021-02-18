@@ -38,10 +38,27 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'users.apps.UsersConfig'
+    'users.apps.UsersConfig',
+    'appointments.apps.AppointmentsConfig',
+    'corsheaders',
+
 ]
 
+REST_FRAMEWORK ={
+    'DEFAULT_AUTHENTICATION_CLASSES':[
+        'rest_framework.authentication.TokenAuthentication',
+    ]
+}
+
+
+CORS_ORIGIN_ALLOW_ALL = False
+
+CORS_ORIGIN_WHITELIST = (
+    'http://localhost:8081',
+)
+
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -79,6 +96,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'djongo',
         'NAME': 'navdurga-db',
+        'HOST': '127.0.0.1',
+        'PORT': '27017'
     }
 }
 
@@ -106,6 +125,8 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
+
+DATETIME_FORMAT = '%m/%d/%Y %H:%M:%S'
 
 TIME_ZONE = 'UTC'
 
